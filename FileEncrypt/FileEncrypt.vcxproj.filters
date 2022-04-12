@@ -17,10 +17,119 @@
       <UniqueIdentifier>{8E41214B-6785-4CFE-B992-037D68949A14}</UniqueIdentifier>
       <Extensions>inf;inv;inx;mof;mc;</Extensions>
     </Filter>
+    <Filter Include="FileHelper">
+      <UniqueIdentifier>{9cf387f4-03b1-4ba7-9059-f3ede54ab0d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OperationHelper">
+      <UniqueIdentifier>{652fa3d7-1e35-4ebf-adf7-2d4be5e773fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProcessHelper">
+      <UniqueIdentifier>{6f97bfaa-32a2-425c-90e6-e967f4d35901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CacheHelper">
+      <UniqueIdentifier>{6f93a189-350e-4491-89eb-8437a870923b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CryptHelper">
+      <UniqueIdentifier>{cfa31ede-bdd1-4b96-8eea-30013747ebf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Inf Include="FileEncrypt.inf">
       <Filter>Driver Files</Filter>
     </Inf>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ContextData.h">
+      <Filter>FileHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HandleIO.h">
+      <Filter>FileHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="Crypt.h">
+      <Filter>CryptHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="EncryptEngine.h">
+      <Filter>CryptHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessHelper.h">
+      <Filter>ProcessHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>FileHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryControl.h">
+      <Filter>FileHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="CacheHelper.h">
+      <Filter>CacheHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadOperation.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteOperation.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="CleanupOperation.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseOpetration.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateOperation.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="QuerySetInfoOperation.h">
+      <Filter>OperationHelper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CacheHelper.c">
+      <Filter>CacheHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="Crypt.c">
+      <Filter>CryptHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="EncryptEngine.c">
+      <Filter>CryptHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextData.c">
+      <Filter>FileHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryControl.c">
+      <Filter>FileHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="FileHelper.c">
+      <Filter>FileHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="HandleIO.c">
+      <Filter>FileHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="CleanupOperation.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="CloseOpetration.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateOperation.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="QuerySetInfoOperation.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadOperation.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteOperation.c">
+      <Filter>OperationHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessHelper.c">
+      <Filter>ProcessHelper</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

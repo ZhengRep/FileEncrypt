@@ -1,0 +1,8 @@
+﻿  Building 'FileEncrypt' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping Debug\FileEncrypt.inf
+  Stamping [Version] section with DriverVer=04/05/2022,11.29.23.322
+  ContextData.cpp
+  Driver.cpp
+  正在生成代码...
+BufferOverflowFastFailK.lib(gs_driverentry.obj) : error LNK2019: 无法解析的外部符号 _DriverEntry@8，函数 _GsDriverEntry@8 中引用了该符号
+E:\Vstudio2019\FileEncrypt\Debug\FileEncrypt.sys : fatal error LNK1120: 1 个无法解析的外部命令

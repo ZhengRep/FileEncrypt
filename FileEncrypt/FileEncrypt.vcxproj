@@ -138,6 +138,40 @@
   <ItemGroup>
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CacheHelper.h" />
+    <ClInclude Include="CleanupOperation.h" />
+    <ClInclude Include="CloseOpetration.h" />
+    <ClInclude Include="CommonVariable.h" />
+    <ClInclude Include="ContextData.h" />
+    <ClInclude Include="CreateOperation.h" />
+    <ClInclude Include="Crypt.h" />
+    <ClInclude Include="DirectoryControl.h" />
+    <ClInclude Include="CommonSetting.h" />
+    <ClInclude Include="EncryptEngine.h" />
+    <ClInclude Include="FileHelper.h" />
+    <ClInclude Include="HandleIO.h" />
+    <ClInclude Include="ProcessHelper.h" />
+    <ClInclude Include="QuerySetInfoOperation.h" />
+    <ClInclude Include="ReadOperation.h" />
+    <ClInclude Include="WriteOperation.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CacheHelper.c" />
+    <ClCompile Include="CleanupOperation.c" />
+    <ClCompile Include="CloseOpetration.c" />
+    <ClCompile Include="ContextData.c" />
+    <ClCompile Include="CreateOperation.c" />
+    <ClCompile Include="Crypt.c" />
+    <ClCompile Include="DirectoryControl.c" />
+    <ClCompile Include="EncryptEngine.c" />
+    <ClCompile Include="FileHelper.c" />
+    <ClCompile Include="HandleIO.c" />
+    <ClCompile Include="ProcessHelper.c" />
+    <ClCompile Include="QuerySetInfoOperation.c" />
+    <ClCompile Include="ReadOperation.c" />
+    <ClCompile Include="WriteOperation.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

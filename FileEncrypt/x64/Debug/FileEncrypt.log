@@ -1,0 +1,31 @@
+﻿  Building 'FileEncrypt' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping x64\Debug\FileEncrypt.inf
+  Stamping [Version] section with DriverVer=04/11/2022,18.37.35.60
+  EncryptEngine.c
+  FileHelper.c
+  ProcessHelper.c
+  正在生成代码...
+FileHelper.obj : error LNK2005: __EncryptHeader 已经在 EncryptEngine.obj 中定义
+ProcessHelper.obj : error LNK2005: __EncryptHeader 已经在 EncryptEngine.obj 中定义
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousQueryInfoCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PostQueryInfoCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousSetInfoCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PostSetInfoCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousCreateCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PostCreateCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousCloseCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousWriteCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PostWriteCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousReadCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PostReadCallback
+EncryptEngine.obj : error LNK2001: 无法解析的外部符号 PreviousCleanupCallback
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltRegisterFilter，函数 DriverEntry 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltUnregisterFilter，函数 FilterUnloadCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltStartFiltering，函数 DriverEntry 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltAllocateContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltSetVolumeContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltDeleteContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltReleaseContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltGetDiskDeviceObject，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltGetVolumeProperties，函数 InstanceSetupCallback 中引用了该符号
+E:\Vstudio2019\FileEncrypt\x64\Debug\FileEncrypt.sys : fatal error LNK1120: 21 个无法解析的外部命令
