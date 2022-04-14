@@ -1,6 +1,7 @@
 #pragma once
 #include <fltKernel.h>
 #include "ContextData.h"
+#include "CommonVariable.h"
 
 typedef struct _PREVIOUS_2_POST_CONTEXT
 {

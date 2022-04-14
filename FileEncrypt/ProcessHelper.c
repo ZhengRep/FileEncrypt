@@ -1,6 +1,27 @@
 #include "ProcessHelper.h"
 #include "CommonVariable.h"
 
+//////////////////////////////////////////////////////////////////////////
+ULONG				__ImageFileNameOffset;
+
+PCHAR GetImageFileName(PCHAR ImageFileName, PEPROCESS EProcess)
+{
+	if (__ImageFileNameOffset)
+	{
+		if (!EProcess)
+		{
+			EProcess = PsGetCurrentProcess();
+		}
+		CHAR* ImageFileNameBuffer= (PCHAR)EProcess + __ImageFileNameOffset;
+		strncpy(ImageFileName, ImageFileNameBuffer, 15);
+	}
+	else
+	{
+		strcpy(ImageFileName, "???");
+	}
+	return ImageFileName;
+}
+
 ULONG GetImageFileNameOffset()
 {
 	PEPROCESS Eprocess = PsGetCurrentProcess();   //当前进程体指针
@@ -218,5 +239,108 @@ BOOLEAN SearchForSpecifiedProcess(PUCHAR ImageFileName, BOOLEAN IsRemove)
 	{
 	}
 
+	return IsOk;
+}
+
+BOOLEAN IsCurrentProcessMonitored(WCHAR* FileFullPath, ULONG FileFullPathLength, BOOLEAN* IsSpecialProcess, BOOLEAN* IsPPTFile)
+{
+	BOOLEAN IsOk;
+	__try 
+	{
+		//当前进程EProcess中获取ImageFileName
+		UCHAR ImageFileName[25] = { 0 };
+		GetImageFileName(ImageFileName, NULL);   //谁 Notepad.exe
+
+		WCHAR TempFileFullPath[MAX_PATH];
+		RtlCopyMemory(TempFileFullPath, FileFullPath, FileFullPathLength * sizeof(WCHAR));//操作谁     1.txt
+
+		if (IsSpecialProcess != NULL)
+		{
+			if ((strlen(ImageFileName) == strlen("explorer.exe")) && !_strnicmp(ImageFileName, "explorer.exe", strlen(ImageFileName)))
+			{
+				*IsSpecialProcess = EXPLORER_PROCESS;
+			}
+			else
+			{
+				*IsSpecialProcess = NORMAL_PROCESS;
+				if ((strlen(ImageFileName) == strlen("excel.exe")) && !_strnicmp(ImageFileName, "excel.exe", strlen(ImageFileName)))
+				{
+					*IsSpecialProcess = EXCEL_PROCESS;
+				}
+				if ((strlen(ImageFileName) == strlen("powerpnt.exe")) && !_strnicmp(ImageFileName, "powerpnt.exe", strlen(ImageFileName)))
+				{
+					*IsSpecialProcess = POWERPNT_PROCESS;
+				}
+			}
+		}
+		//将字符串转换为小写形式
+		_wcslwr(TempFileFullPath);
+		if (wcsstr(TempFileFullPath, L"\\local settings\\temp\\~wrd"))
+		{
+			IsOk = TRUE;
+		}
+
+		//定位到文件路径的末尾
+		PWCHAR FileEnd = TempFileFullPath + FileFullPathLength - 1;
+
+		if (FileFullPath[FileFullPathLength - 1] == L'\\')
+		{
+			IsOk = FALSE;
+			__leave;
+		}
+
+		while (((TempFileFullPath != FileEnd) && (*FileEnd != L'\\')) && ((*FileEnd) != L'.'))
+		{
+			FileEnd--;    //获取文件类型
+		}
+
+		if ((FileEnd == TempFileFullPath) || (*FileEnd == L'\\'))
+		{
+			FileEnd[0] = L'.';
+			FileEnd[1] = L'\0';
+		}
+
+		if ((IsPPTFile != NULL) && !_wcsnicmp(FileEnd, L".ppt", wcslen(L".ppt")))
+		{
+			*IsPPTFile = TRUE;
+		}
+
+		PLIST_ENTRY ListEntry = __ListHeadOfMonitorProcess.Flink;
+		PPROCESS_INFORMATION ProcessInfo;
+		while (&__ListHeadOfMonitorProcess != ListEntry)
+		{
+			ProcessInfo = CONTAINING_RECORD(ListEntry, PROCESS_INFORMATION, ListEntry);
+			if (!_strnicmp(ProcessInfo->ImageFileName, ImageFileName, strlen(ImageFileName)))
+			{
+				int Index = 0;
+				if (ProcessInfo->FileType[0][0] == L'\0')
+				{
+					IsOk = ProcessInfo->IsMonitor;
+					leave;
+				}
+				while (TRUE)
+				{
+					if (ProcessInfo->FileType[Index][0] == L'\0')
+					{
+						IsOk = FALSE; // 当前请求的发起者在监控列表中,但是操作的文件类型不在监控列表中
+						break;
+					}
+					else if ((wcslen(FileEnd) == wcslen(ProcessInfo->FileType[Index])) && !_wcsnicmp(FileEnd, ProcessInfo->FileType[Index], wcslen(FileEnd)))
+					{
+						IsOk = ProcessInfo->IsMonitor;  //获取文件类型是否属于监控范围内
+						break;
+					}
+					Index++;
+				}
+				__leave;
+			}
+			ListEntry = ListEntry->Flink;
+		}
+		IsOk = FALSE;    //当前请求的发起者不在监控列表中
+	}
+	__finally 
+	{
+
+	}
 	return IsOk;
 }

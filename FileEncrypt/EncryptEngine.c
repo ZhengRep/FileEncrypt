@@ -1,14 +1,13 @@
 #include "EncryptEngine.h"
+//#include "QuerySetInfoOperation.h"
+//#include "CreateOperation.h"
+//#include "CloseOpetration.h"
+//#include "CleanupOperation.h"
+#include "WriteOperation.h"
 #include "FileHelper.h"
 #include "ProcessHelper.h"
-#include "QuerySetInfoOperation.h"
-#include "CreateOperation.h"
-#include "CloseOpetration.h"
-#include "WriteOperation.h"
 #include "ReadOperation.h"
-#include "CleanupOperation.h"
 #include "CommonVariable.h"
-#include "CommonSetting.h"
 
 //////////////////////////////////////////////////////////////////////////
 //Macro
@@ -16,20 +15,24 @@
 
 //////////////////////////////////////////////////////////////////////////
 //Global Variables
-NPAGED_LOOKASIDE_LIST		__NpagedLookasideListOfPrevious2Post;
 ULONG						__ImageFileNameOffset;
 PFLT_FILTER					__FilterHandle;
+//Global Vars
+LIST_ENTRY					__ListHeadOfMonitorProcess;
+KSPIN_LOCK					__SpinLockOfListEntry;
+PENCRYPT_HEADER				__EncryptHeader;
+NPAGED_LOOKASIDE_LIST		__NpagedLookasideListOfPrevious2Post;
 
 //CreateFile
 CONST FLT_OPERATION_REGISTRATION __Callbacks[] = {
 
-	{
+	/*{
 		IRP_MJ_CREATE,
 		FLTFL_OPERATION_REGISTRATION_SKIP_PAGING_IO,
 		PreviousCreateCallback,
 		PostCreateCallback 
-	},
-	{
+	},*/
+	/*{
 		IRP_MJ_CLEANUP, 
 		FLTFL_OPERATION_REGISTRATION_SKIP_PAGING_IO,
 		PreviousCleanupCallback,
@@ -58,19 +61,19 @@ CONST FLT_OPERATION_REGISTRATION __Callbacks[] = {
 		0,
 		NULL,
 		NULL
-	},
+	},*/
 	{
 		IRP_MJ_READ,
 		0,
 		PreviousReadCallback,
 		PostReadCallback
 	},
-	{
-		IRP_MJ_WRITE,
-		0,
-		PreviousWriteCallback,
-		PostWriteCallback
-	},
+	//{
+	//	IRP_MJ_WRITE,
+	//	0,
+	//	PreviousWriteCallback,
+	//	PostWriteCallback
+	//},
 	{ IRP_MJ_OPERATION_END }
 };
 

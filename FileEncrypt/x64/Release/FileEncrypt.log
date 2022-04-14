@@ -1,0 +1,20 @@
+﻿  Building 'FileEncrypt' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping x64\Release\FileEncrypt.inf
+  Stamping [Version] section with DriverVer=04/13/2022,11.11.24.351
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltRegisterFilter，函数 DriverEntry 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltUnregisterFilter，函数 FilterUnloadCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltStartFiltering，函数 DriverEntry 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltAllocateContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltSetVolumeContext，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltReleaseContext，函数 InstanceSetupCallback 中引用了该符号
+ReadOperation.obj : error LNK2001: 无法解析的外部符号 FltReleaseContext
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 FltReleaseContext
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltGetDiskDeviceObject，函数 InstanceSetupCallback 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 FltGetVolumeProperties，函数 InstanceSetupCallback 中引用了该符号
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 FltSetCallbackDataDirty，函数 PostReadCallback 中引用了该符号
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 FltSetCallbackDataDirty
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 FltDoCompletionProcessingWhenSafe，函数 PostReadCallback 中引用了该符号
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 FltGetVolumeContext，函数 PreviousReadCallback 中引用了该符号
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 FltGetVolumeContext
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 FltLockUserBuffer，函数 PostReadCallbackSafe 中引用了该符号
+E:\Vstudio2019\FileEncrypt\x64\Release\FileEncrypt.sys : fatal error LNK1120: 12 个无法解析的外部命令

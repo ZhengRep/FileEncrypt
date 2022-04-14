@@ -1,8 +1,37 @@
 ﻿  Building 'FileEncrypt' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
   Stamping Debug\FileEncrypt.inf
-  Stamping [Version] section with DriverVer=04/05/2022,11.29.23.322
-  ContextData.cpp
-  Driver.cpp
+  Stamping [Version] section with DriverVer=04/13/2022,11.6.21.546
+  CacheHelper.c
+  CleanupOperation.c
+  CloseOpetration.c
+  ContextData.c
+  CreateOperation.c
+  Crypt.c
+  DirectoryControl.c
+  EncryptEngine.c
+  FileHelper.c
+  HandleIO.c
+  ProcessHelper.c
+  QuerySetInfoOperation.c
+  ReadOperation.c
+  WriteOperation.c
   正在生成代码...
-BufferOverflowFastFailK.lib(gs_driverentry.obj) : error LNK2019: 无法解析的外部符号 _DriverEntry@8，函数 _GsDriverEntry@8 中引用了该符号
-E:\Vstudio2019\FileEncrypt\Debug\FileEncrypt.sys : fatal error LNK1120: 1 个无法解析的外部命令
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltRegisterFilter@12，函数 _DriverEntry@8 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltUnregisterFilter@4，函数 _FilterUnloadCallback@4 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltStartFiltering@4，函数 _DriverEntry@8 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltAllocateContext@20，函数 _InstanceSetupCallback@16 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltSetVolumeContext@16，函数 _InstanceSetupCallback@16 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltDeleteContext@4，函数 _InstanceSetupCallback@16 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltReleaseContext@4，函数 _InstanceSetupCallback@16 中引用了该符号
+ReadOperation.obj : error LNK2001: 无法解析的外部符号 _FltReleaseContext@4
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 _FltReleaseContext@4
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltGetDiskDeviceObject@8，函数 _InstanceSetupCallback@16 中引用了该符号
+EncryptEngine.obj : error LNK2019: 无法解析的外部符号 _FltGetVolumeProperties@16，函数 _InstanceSetupCallback@16 中引用了该符号
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 _FltSetCallbackDataDirty@4，函数 _PostReadCallback@16 中引用了该符号
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 _FltSetCallbackDataDirty@4
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 _FltDoCompletionProcessingWhenSafe@24，函数 _PostReadCallback@16 中引用了该符号
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 _FltGetVolumeContext@12，函数 _PreviousReadCallback@12 中引用了该符号
+WriteOperation.obj : error LNK2001: 无法解析的外部符号 _FltGetVolumeContext@12
+ReadOperation.obj : error LNK2019: 无法解析的外部符号 _FltLockUserBuffer@4，函数 _PostReadCallbackSafe@16 中引用了该符号
+fltmgr.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+LINK : error LNK1218: 警告被视为错误；未生成输出文件

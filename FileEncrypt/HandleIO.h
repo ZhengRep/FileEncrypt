@@ -9,10 +9,12 @@ NTSTATUS HandleIO(
 	__in PVOID					BufferData,
 	__in ULONG					BufferLength,
 	__out PULONG				ReturnLength,
-	__in FLT_IO_OPERATION_FLAGS FltFlags);
+	__in FLT_IO_OPERATION_FLAGS FltFlags
+);
 
 
 NTSTATUS CompleteProcedure(
 	IN PDEVICE_OBJECT			DeviceObject,
 	IN PIRP						Irp,
-	IN PVOID					Context);
+	IN PVOID					Context
+);
